@@ -1,0 +1,783 @@
+<!--
+  ==============================================================
+  PROYECTO: Carpintería en Melamina Topazio
+  ESTUDIANTE: Franco Choque Orellana
+  MATERIA: Sistemas Informáticos (Módulo 2)
+  ==============================================================
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Carpintería en Melamina Topazio. Diseño 3D en SketchUp, optimización de cortes de placas de 1850x2750mm en 15mm y fabricación de muebles a medida en Villa Pagador.">
+  <title>Carpintería en Melamina Topazio | Muebles a Medida y Diseño 3D</title>
+  
+  <!-- Google Fonts: 4 Tipografías Armónicas (Playfair Display, Montserrat, Plus Jakarta Sans, Space Grotesk) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Script de prevención de parpadeo de tema (FOUC) -->
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('topazio_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const activeTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', activeTheme);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Script principal diferido -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- HEADER Y NAVEGACIÓN -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#hero" class="brand" aria-label="Inicio Carpintería en Melamina Topazio">
+        <div class="brand-logo-container">
+          <img src="assets/logo sin fondo.png" alt="Logo Carpintería en Melamina Topazio" class="brand-logo" width="52" height="52">
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Carpintería Topazio</span>
+          <span class="brand-tagline">Muebles a Medida &bull; Villa Pagador</span>
+        </div>
+      </a>
+
+      <nav class="nav" id="mainNav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#hero" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="#servicios" class="nav-link">Servicios</a></li>
+          <li class="nav-item"><a href="#catalogo" class="nav-link">Catálogo</a></li>
+          <li class="nav-item"><a href="#cotizador" class="nav-link">Cotizador</a></li>
+          <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+          <li class="nav-item">
+            <a href="https://wa.me/59167477699?text=Hola%20Topazio,%20quisiera%20consultar%20sobre%20un%20proyecto" 
+               class="btn btn-whatsapp-nav" 
+               target="_blank" 
+               rel="noopener noreferrer">
+              WhatsApp 67477699
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Botón Toggle de Modo Claro / Modo Oscuro -->
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro" title="Modo Claro / Oscuro">
+          <span class="theme-toggle-icon" id="themeIcon" aria-hidden="true">🌙</span>
+        </button>
+
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span class="hamburger"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <span class="badge">Especialistas en Melamina de 15mm</span>
+          <h1 class="hero-title">Fabricación de Muebles a Medida con Precisión y Diseño 3D</h1>
+          <p class="hero-description">
+            En <strong>Carpintería en Melamina Topazio</strong> materializamos tus ideas. 
+            Modelamos tus proyectos en <strong>SketchUp</strong>, optimizamos el corte de tableros 
+            (placas estándar de 1850×2750 mm) y creamos muebles duraderos con acabados impecables en Villa Pagador.
+          </p>
+          <div class="hero-actions">
+            <a href="#cotizador" class="btn btn-primary">Cotizar Proyecto</a>
+            <a href="#catalogo" class="btn btn-secondary">Explorar Catálogo</a>
+            <a href="tel:67477699" class="btn btn-outline">Llamar: 67477699</a>
+          </div>
+          <div class="hero-features">
+            <div class="feature-item">
+              <span class="feature-icon">📐</span>
+              <span>Modelado 3D SketchUp</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">✂️</span>
+              <span>Despiece y Corte Óptimo</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🔨</span>
+              <span>Muebles 100% Personalizados</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="assets/post publicitario.jpg" alt="Mobiliario a medida en melamina - Carpintería Topazio" class="hero-image" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section id="servicios" class="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Lo que hacemos</span>
+          <h2 class="section-title">Nuestros Servicios Profesionales</h2>
+          <p class="section-description">
+            Soluciones integrales de carpintería moderna basadas en tecnología de corte, optimización de material y diseño asistido.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon-box">📐</div>
+            <h3 class="service-title">Diseño 3D en SketchUp</h3>
+            <p class="service-description">
+              Visualiza cada detalle de tu mueble antes de iniciar la fabricación. Creamos modelos tridimensionales a escala con dimensiones exactas para garantizar la distribución ideal de tus espacios.
+            </p>
+            <ul class="service-checklist">
+              <li>Planos y perspectivas realistas</li>
+              <li>Ajuste milimétrico a tus ambientes</li>
+              <li>Aprobación visual antes del corte</li>
+            </ul>
+          </article>
+
+          <article class="service-card highlight">
+            <div class="service-icon-box">⚙️</div>
+            <h3 class="service-title">Optimización de Cortes / Despiece</h3>
+            <p class="service-description">
+              Aprovechamiento técnico superior de tableros de melamina en placas de <strong>1850×2750 mm</strong> y espesor de <strong>15 mm</strong>. Reducimos el desperdicio de material y maximizamos tu presupuesto.
+            </p>
+            <ul class="service-checklist">
+              <li>Placas estándar 1850 × 2750 × 15 mm</li>
+              <li>Diagramas de corte computarizados</li>
+              <li>Ahorro en material y cantos</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon-box">🪚</div>
+            <h3 class="service-title">Fabricación de Muebles a Medida</h3>
+            <p class="service-description">
+              Construcción meticulosa con cantos termofusionados, herrajes de alta duración y ensamble resistente. Creamos desde veladores y escritorios ergonómicos hasta centros de entretenimiento completos.
+            </p>
+            <ul class="service-checklist">
+              <li>Melamina de 15 mm de alta densidad</li>
+              <li>Herrajes y correderas de calidad</li>
+              <li>Instalación y armado garantizado</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE PROYECTOS -->
+    <section id="catalogo" class="catalog">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Portafolio Destacado</span>
+          <h2 class="section-title">Catálogo de Proyectos</h2>
+          <p class="section-description">
+            Muestrario de mobiliario diseñado y elaborado con precisión técnica y acabados en melamina.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- 1. Escritorio Minimalista -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/escritorio minimalista.jpg" alt="Escritorio minimalista moderno para estudio u oficina" class="project-img" loading="lazy">
+              <span class="project-badge">Home Office</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Escritorio Minimalista</h3>
+              <p class="project-description">
+                Diseñado para estaciones de trabajo y estudio eficiente. Estructura robusta en placa de 15 mm con espacio optimizado para laptop, monitor y cableado ordenado.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Ergonómico</span>
+                <span class="meta-tag">Fácil mantenimiento</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 450</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Consola TV & Centro Multimedia -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/mueble para televisor.jpg" alt="Consola para TV y centro de entretenimiento moderno" class="project-img" loading="lazy">
+              <span class="project-badge">Sala & TV</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Consola TV & Centro Multimedia</h3>
+              <p class="project-description">
+                Mueble flotante o de piso con compartimentos para decodificadores, consolas de videojuegos y repisas organizadoras con pasacables integrados.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Pasacables ocultos</span>
+                <span class="meta-tag">Módulos flotantes</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 680</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Velador / Mesita de Noche -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/mesita de noche.jpg" alt="Velador moderno o mesita de noche en melamina" class="project-img" loading="lazy">
+              <span class="project-badge">Dormitorio</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Velador / Mesita de Noche</h3>
+              <p class="project-description">
+                Pieza funcional para dormitorio con cajón suave, correderas telescópicas, tiradores discretos y repisa inferior de apoyo en 15 mm.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Corredera telescópica</span>
+                <span class="meta-tag">Acabado pulcro</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 240</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Vitrina con Iluminación LED -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/muebles con led.jpg" alt="Vitrina y centro decorativo moderno con iluminación LED integrada" class="project-img" loading="lazy">
+              <span class="project-badge">Iluminación LED</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Vitrina con Iluminación LED</h3>
+              <p class="project-description">
+                Mobiliario de vanguardia con perfiles de luz LED cálida/fría embutida, entrepaños de cristal o melamina y nichos de exhibición para sala o estar.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Perfil LED embutido</span>
+                <span class="meta-tag">Diseño exclusivo</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 750</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Librero & Biblioteca Modular -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/librero.jpg" alt="Librero modular resistente en melamina de 15mm para estudio" class="project-img" loading="lazy">
+              <span class="project-badge">Estudio & Biblioteca</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Librero & Biblioteca Modular</h3>
+              <p class="project-description">
+                Estructura vertical resistente calculada para soportar peso de libros y enciclopedias sin pandeo. Espacios asimétricos modernos para almacenamiento.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Gran capacidad</span>
+                <span class="meta-tag">Refuerzos estructurales</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 520</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Mueble Zapatero de Puertas -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/mueble zapatero.jpg" alt="Mueble zapatero organizador cerrado con puertas en melamina" class="project-img" loading="lazy">
+              <span class="project-badge">Organización</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Mueble Zapatero de Puertas</h3>
+              <p class="project-description">
+                Aparador zapatero elegante con puertas abatibles o correderas y repisas inclinadas internas para preservar el calzado ordenado y fuera de vista.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Puertas abatibles</span>
+                <span class="meta-tag">Capacidad para 18+ pares</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 420</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Estante Zapatero Vertical -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/estante zapatero.jpg" alt="Estante zapatero vertical abierto para espacios reducidos" class="project-img" loading="lazy">
+              <span class="project-badge">Espacios Compactos</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Estante Zapatero Vertical</h3>
+              <p class="project-description">
+                Diseño vertical abierto de fondo reducido, pensado para entradas, pasillos o dormitorios pequeños con acceso inmediato al calzado de uso diario.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Perfil angosto</span>
+                <span class="meta-tag">Aprovechamiento de altura</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 320</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. Estante Infantil para Juguetes -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/estante para juguetes.jpg" alt="Estante organizador infantil para juguetes y cuentos" class="project-img" loading="lazy">
+              <span class="project-badge">Dormitorio Infantil</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Estante Infantil para Juguetes</h3>
+              <p class="project-description">
+                Organizador Montessori con altura accesible para niños, esquinas perfiladas seguras y módulos cúbicos para canastas, cajas y juguetes.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Bordes redondeados</span>
+                <span class="meta-tag">Accesibilidad niños</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 380</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9. Mueble Especiero / Condimentero -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/condimentero.jpg" alt="Mueble condimentero organizador para cocina en melamina" class="project-img" loading="lazy">
+              <span class="project-badge">Cocina Práctica</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Mueble Condimentero de Cocina</h3>
+              <p class="project-description">
+                Módulo compacto para pared o bajo mesada, ideal para frascos de condimentos, aceites y especias con barandillas anticaída y fácil limpieza.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Resistente a humedad</span>
+                <span class="meta-tag">Barandilla de protección</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 260</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10. Repisas Flotantes Empotrables -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/repisas empotrables.jpg" alt="Juego de repisas flotantes empotrables en pared" class="project-img" loading="lazy">
+              <span class="project-badge">Decoración</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Repisas Flotantes Empotrables</h3>
+              <p class="project-description">
+                Kit de repisas con anclaje invisible para fijación sólida a pared. Acabado prolijo sin tornillos a la vista para salas, dormitorios y oficinas.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Fijación oculta</span>
+                <span class="meta-tag">Instalación precisa</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 180</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 11. Estantería Decorativa Multiuso -->
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/repiza de estanteria.jpg" alt="Estantería decorativa con repisas escalonadas multiuso" class="project-img" loading="lazy">
+              <span class="project-badge">Multiuso</span>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Estantería Decorativa Multiuso</h3>
+              <p class="project-description">
+                Repisero escalonado de estilo geométrico contemporáneo. Perfecto como separador de ambientes sutil o vitrina para plantas de interior y cuadros.
+              </p>
+              <div class="project-meta">
+                <span class="meta-tag">Espesor: 15 mm</span>
+                <span class="meta-tag">Diseño asimétrico</span>
+                <span class="meta-tag">Alta estabilidad</span>
+              </div>
+              <div class="project-footer">
+                <span class="project-price">Desde <strong>Bs. 360</strong></span>
+                <a href="#cotizador" class="btn btn-sm btn-outline">Cotizar Similar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COTIZADOR INTERACTIVO -->
+    <section id="cotizador" class="calculator">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Presupuesto Rápido</span>
+          <h2 class="section-title">Cotizador Interactivo de Muebles</h2>
+          <p class="section-description">
+            Calcula un costo estimado de fabricación según el tipo de mueble, dimensiones y especificaciones en melamina de 15mm.
+          </p>
+        </div>
+
+        <div class="calculator-wrapper">
+          <form id="calculatorForm" class="calculator-form" novalidate>
+            <div class="form-row three-cols">
+              <div class="form-group">
+                <label for="furnitureType" class="form-label">Tipo de Proyecto *</label>
+                <select id="furnitureType" name="furnitureType" class="form-control" required>
+                  <option value="" disabled selected>Selecciona un tipo de mueble</option>
+                  <option value="escritorio" data-base="450">Escritorio (Estudio / Home Office)</option>
+                  <option value="consola" data-base="680">Consola TV / Centro Multimedia</option>
+                  <option value="velador" data-base="240">Velador / Mesita de Noche</option>
+                  <option value="vitrina" data-base="750">Vitrina / Centro con Perfil LED</option>
+                  <option value="librero" data-base="520">Librero / Biblioteca Modular</option>
+                  <option value="zapatero" data-base="380">Mueble / Estante Zapatero</option>
+                  <option value="juguetero" data-base="380">Estante Infantil para Juguetes</option>
+                  <option value="condimentero" data-base="260">Mueble Condimentero de Cocina</option>
+                  <option value="repisas" data-base="180">Repisas Flotantes / Estantería</option>
+                  <option value="personalizado" data-base="600">Mueble Especial a Medida</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="sheetCount" class="form-label">Placas de 15mm (1850×2750) *</label>
+                <input type="number" id="sheetCount" name="sheetCount" class="form-control" min="1" max="20" value="1" required>
+              </div>
+
+              <div class="form-group">
+                <label for="melamineFinish" class="form-label">Acabado de Melamina *</label>
+                <select id="melamineFinish" name="melamineFinish" class="form-control" required>
+                  <option value="blanco" data-factor="1.0">Blanco Estándar</option>
+                  <option value="maderado" data-factor="1.15">Veta Maderada Clásica</option>
+                  <option value="texturizado" data-factor="1.25">Gris Grafito / Texturizado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row three-cols">
+              <div class="form-group">
+                <label for="dimWidth" class="form-label">Ancho aprox. (cm)</label>
+                <input type="number" id="dimWidth" name="dimWidth" class="form-control" placeholder="Ej. 120" min="30" max="350" value="100">
+              </div>
+              <div class="form-group">
+                <label for="dimHeight" class="form-label">Alto aprox. (cm)</label>
+                <input type="number" id="dimHeight" name="dimHeight" class="form-control" placeholder="Ej. 75" min="30" max="275" value="75">
+              </div>
+              <div class="form-group">
+                <label for="dimDepth" class="form-label">Profundidad aprox. (cm)</label>
+                <input type="number" id="dimDepth" name="dimDepth" class="form-control" placeholder="Ej. 50" min="20" max="100" value="50">
+              </div>
+            </div>
+
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Adicionales y Servicios Técnicos</legend>
+              <div class="checkbox-grid">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="addSketchUp" name="extras" value="sketchup" data-cost="50">
+                  <span>Diseño 3D en SketchUp previo (+Bs. 50)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="addTelescopicas" name="extras" value="correderas" data-cost="40">
+                  <span>Correderas Telescópicas Reforzadas (+Bs. 40)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="addCantoGrueso" name="extras" value="canto" data-cost="35">
+                  <span>Canto PVC Grueso de Alto Impacto (+Bs. 35)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="addIluminacion" name="extras" value="led" data-cost="80">
+                  <span>Instalación de Perfil LED cálido/frío (+Bs. 80)</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="button" id="btnCalculate" class="btn btn-primary">Calcular Presupuesto</button>
+              <button type="reset" id="btnReset" class="btn btn-secondary">Limpiar</button>
+            </div>
+          </form>
+
+          <!-- RESULTADO DEL COTIZADOR -->
+          <div class="calculator-result" id="calculatorResult" aria-live="polite">
+            <h3 class="result-title">Estimación de Cotización</h3>
+            <div class="result-box">
+              <div class="result-metric">
+                <span class="result-label">Total Estimado:</span>
+                <span class="result-price" id="totalPrice">Bs. 0.00</span>
+              </div>
+              <p class="result-specs" id="specsSummary">Selecciona las opciones del formulario para ver el desglose estimado.</p>
+              
+              <ul class="result-details" id="detailsList">
+                <li>Espesor garantizado: Placas de 15 mm</li>
+                <li>Dimensiones de placa base: 1850 × 2750 mm</li>
+                <li>Incluye optimización técnica de corte y armado</li>
+              </ul>
+
+              <div class="result-cta">
+                <a href="#" id="btnWhatsAppQuote" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                  Enviar Cotización por WhatsApp (67477699)
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO Y UBICACIÓN REAL -->
+    <section id="contacto" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Hablemos de tu proyecto</span>
+          <h2 class="section-title">Información de Contacto y Ubicación</h2>
+          <p class="section-description">
+            Estamos disponibles para asesorarte en tus medidas, diseño y cotización de mobiliario en melamina.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Tarjeta de Información Directa -->
+          <div class="contact-card">
+            <h3 class="contact-card-title">Carpintería en Melamina Topazio</h3>
+            <p class="contact-card-desc">
+              Atención directa en taller y coordinación de visitas para toma de medidas en tu domicilio o negocio.
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div class="contact-text">
+                  <span class="contact-label">Teléfono / WhatsApp</span>
+                  <a href="tel:67477699" class="contact-link"><strong>67477699</strong></a>
+                  <small>Respuesta rápida y presupuestos sin compromiso</small>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-text">
+                  <span class="contact-label">Ubicación del Taller</span>
+                  <span class="contact-value"><strong>Villa Pagador</strong></span>
+                  <small>Cochabamba, Bolivia</small>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">📐</div>
+                <div class="contact-text">
+                  <span class="contact-label">Servicios Especializados</span>
+                  <span class="contact-value">Diseño 3D (SketchUp) | Placas 1850×2750×15mm</span>
+                  <small>Cortes milimétricos y armado garantizado</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-action-box">
+              <a href="https://wa.me/59167477699?text=Hola%20Carpinter%C3%ADa%20Topazio,%20estoy%20en%20Villa%20Pagador%20y%20quiero%20cotizar%20un%20mueble" 
+                 class="btn btn-whatsapp-full" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                Escribir al WhatsApp: 67477699
+              </a>
+            </div>
+          </div>
+
+          <!-- Formulario Rápido de Consulta -->
+          <div class="contact-form-card">
+            <h3 class="contact-card-title">Envíanos un Mensaje</h3>
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="contactName" class="form-label">Nombre Completo *</label>
+                <input type="text" id="contactName" name="contactName" class="form-control" placeholder="Tu nombre" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactPhone" class="form-label">Teléfono / Celular *</label>
+                <input type="tel" id="contactPhone" name="contactPhone" class="form-control" placeholder="Ej. 67477699" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Detalle del Mueble o Medidas *</label>
+                <textarea id="contactMessage" name="contactMessage" rows="4" class="form-control" placeholder="Ej. Necesito un escritorio en L para estudio de 1.20 x 0.60 m en Villa Pagador..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Enviar Consulta Directa</button>
+              <p id="contactStatus" class="form-feedback" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE REDES SOCIALES Y ENLACES DIRECTOS -->
+    <section class="social-connect" id="redes">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Canales Oficiales</span>
+          <h2 class="section-title">Encuéntranos en Redes y Contacto Directo</h2>
+          <p class="section-description">
+            Visita nuestra tienda virtual en Facebook Marketplace o contáctanos por WhatsApp para consultas técnicas desde nuestro taller en Villa Pagador.
+          </p>
+        </div>
+
+        <div class="social-cards-grid">
+          <!-- Tarjeta 1: Facebook Marketplace Destacado -->
+          <article class="social-card social-card-fb">
+            <div class="social-card-icon fb-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </div>
+            <div class="social-card-content">
+              <span class="social-badge">Marketplace Oficial</span>
+              <h3 class="social-card-title">Tienda en Facebook</h3>
+              <p class="social-card-text">
+                Descubre publicaciones activas, modelos listos para entrega y variedad de muebles en melamina en nuestra vitrina de Marketplace.
+              </p>
+              <a href="https://www.facebook.com/share/1EzMgxiF2d/" 
+                 class="btn btn-social-fb" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                <span>Ver Tienda en Marketplace</span>
+                <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2: WhatsApp Directo -->
+          <article class="social-card social-card-wa">
+            <div class="social-card-icon wa-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+              </svg>
+            </div>
+            <div class="social-card-content">
+              <span class="social-badge">Respuesta Inmediata</span>
+              <h3 class="social-card-title">WhatsApp: 67477699</h3>
+              <p class="social-card-text">
+                Comunícate directamente con nuestro taller para coordinar medidas, cotizaciones personalizadas y pedidos urgentes.
+              </p>
+              <a href="https://wa.me/59167477699?text=Hola%20Topazio,%20los%20contacto%20desde%20la%20p%C3%A1gina%20web" 
+                 class="btn btn-social-wa" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                <span>Escribir al 67477699</span>
+                <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3: Referencia Ubicación Villa Pagador -->
+          <article class="social-card social-card-location">
+            <div class="social-card-icon loc-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="social-card-content">
+              <span class="social-badge">Taller y Fabricación</span>
+              <h3 class="social-card-title">Ubicación: Villa Pagador</h3>
+              <p class="social-card-text">
+                Ubicados en Villa Pagador (Cochabamba). Atendemos pedidos a medida y visitas técnicas para toma de dimensiones.
+              </p>
+              <a href="tel:67477699" 
+                 class="btn btn-social-loc">
+                <span>Llamar al Taller (67477699)</span>
+                <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Logo Topazio" class="footer-logo" width="36" height="36">
+          <span class="footer-brand-name">Carpintería en Melamina Topazio</span>
+        </div>
+        <p class="footer-text">
+          Fabricación de muebles a medida, modelado 3D en SketchUp y optimización de tableros (1850×2750×15 mm) en Villa Pagador.
+        </p>
+        <div class="footer-social-inline">
+          <a href="https://www.facebook.com/share/1EzMgxiF2d/" class="footer-social-btn fb" target="_blank" rel="noopener noreferrer" aria-label="Facebook Marketplace" title="Tienda en Facebook Marketplace">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>Marketplace</span>
+          </a>
+          <a href="https://wa.me/59167477699" class="footer-social-btn wa" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp 67477699" title="WhatsApp 67477699">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+        <p class="footer-contact-simple">
+          <strong>Contacto:</strong> <a href="tel:67477699">67477699</a> | <strong>Ubicación:</strong> Villa Pagador
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#servicios">Servicios Técnicos</a></li>
+          <li><a href="#catalogo">Catálogo de Muebles</a></li>
+          <li><a href="#cotizador">Cotizador Interactivo</a></li>
+          <li><a href="#contacto">Contacto & Taller</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+       
+       
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p class="copyright">&copy; 2026 Carpintería en Melamina Topazio. Todos los derechos reservados.</p>
+        <p class="academic-credit">Desarrollado por Franco Choque Orellana &bull; Sistemas Informáticos (Módulo 2)</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
