@@ -97,11 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
    * ------------------------------------------------------------------------ */
   const calculatorForm = document.getElementById('calculatorForm');
   const furnitureType = document.getElementById('furnitureType');
+  const clientNameInput = document.getElementById('clientName');
   const sheetCountInput = document.getElementById('sheetCount');
   const melamineFinish = document.getElementById('melamineFinish');
-  const dimWidth = document.getElementById('dimWidth');
-  const dimHeight = document.getElementById('dimHeight');
-  const dimDepth = document.getElementById('dimDepth');
+  const dimAlto = document.getElementById('dimAlto') || document.getElementById('dimHeight');
+  const dimLargo = document.getElementById('dimLargo');
+  const dimAncho = document.getElementById('dimAncho') || document.getElementById('dimWidth');
+  const dimProfundidad = document.getElementById('dimProfundidad') || document.getElementById('dimDepth');
   const btnCalculate = document.getElementById('btnCalculate');
   const btnReset = document.getElementById('btnReset');
 
@@ -189,9 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const grandTotal = Math.round(totalSheetsCost + laborCost + extrasTotal);
 
     // Dimensiones referenciales
-    const width = dimWidth ? dimWidth.value : '100';
-    const height = dimHeight ? dimHeight.value : '75';
-    const depth = dimDepth ? dimDepth.value : '50';
+    const alto = dimAlto ? dimAlto.value : '75';
+    const largo = dimLargo ? dimLargo.value : '120';
+    const ancho = dimAncho ? dimAncho.value : '60';
+    const profundidad = dimProfundidad ? dimProfundidad.value : '50';
 
     // 1. Actualizar precio en DOM con formato monetario
     if (totalPriceEl) {
@@ -201,14 +204,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Actualizar resumen de especificaciones
     if (specsSummaryEl) {
       const sheetWord = sheets === 1 ? 'placa' : 'placas';
-      specsSummaryEl.textContent = `${typeInfo.name} • ${sheets} ${sheetWord} de melamina 15mm (${finishInfo.name}) • Aprox. ${width}x${height}x${depth} cm.`;
+      specsSummaryEl.textContent = `${typeInfo.name} • ${sheets} ${sheetWord} de melamina 15mm (${finishInfo.name}) • Alto: ${alto}cm | Largo: ${largo}cm | Ancho: ${ancho}cm | Prof: ${profundidad}cm.`;
     }
 
     // 3. Actualizar lista de desglose en DOM
     if (detailsListEl) {
       detailsListEl.innerHTML = `
         <li><strong>Placas (1850×2750×15mm):</strong> ${sheets} unidad(es) de ${finishInfo.name} (~Bs. ${Math.round(totalSheetsCost)})</li>
-        <li><strong>Corte, despiece y ensamblado:</strong> Optimización técnica de material (~Bs. ${Math.round(laborCost)})</li>
+        <li><strong>Medidas del proyecto:</strong> Alto: ${alto} cm | Largo: ${largo} cm | Ancho: ${ancho} cm | Profundidad: ${profundidad} cm</li>
+        <li><strong>Corte, despiece y ensamble:</strong> Optimización técnica de material (~Bs. ${Math.round(laborCost)})</li>
         <li><strong>Adicionales técnicos:</strong> ${selectedExtrasList.length > 0 ? selectedExtrasList.join(', ') : 'Ninguno seleccionado'} (+Bs. ${extrasTotal})</li>
         <li><strong>Taller de fabricación:</strong> Villa Pagador (Cochabamba)</li>
       `;
@@ -217,12 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Actualizar enlace dinámico de WhatsApp
     if (btnWhatsAppQuote) {
       const extrasText = selectedExtrasList.length > 0 ? selectedExtrasList.join('; ') : 'Estándar';
+      const nombreCliente = (clientNameInput && clientNameInput.value.trim()) || 'Cliente';
       const msg = [
-        `Hola Carpintería Topazio! Quiero cotizar este mueble:`,
+        `Hola Carpintería Topazio! Mi nombre es ${nombreCliente}.`,
+        `Quiero cotizar este proyecto a medida:`,
         `- Proyecto: ${typeInfo.name}`,
         `- Placas de 15mm: ${sheets} placa(s) (1850x2750mm)`,
         `- Acabado: ${finishInfo.name}`,
-        `- Medidas aproximadas: ${width}x${height}x${depth} cm`,
+        `- Medidas: Alto: ${alto}cm | Largo: ${largo}cm | Ancho: ${ancho}cm | Prof: ${profundidad}cm`,
         `- Adicionales: ${extrasText}`,
         `- Total Estimado: Bs. ${grandTotal}.00`,
         `¿Podrían confirmarme la disponibilidad en su taller de Villa Pagador?`

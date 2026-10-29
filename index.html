@@ -455,7 +455,13 @@
 
         <div class="calculator-wrapper">
           <form id="calculatorForm" class="calculator-form" novalidate>
-            <div class="form-row three-cols">
+            <!-- Fila 1: Datos del Cliente y Proyecto -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="clientName" class="form-label">Nombre del Cliente / Usuario</label>
+                <input type="text" id="clientName" name="clientName" class="form-control" placeholder="Ej. Franco Choque">
+              </div>
+
               <div class="form-group">
                 <label for="furnitureType" class="form-label">Tipo de Proyecto *</label>
                 <select id="furnitureType" name="furnitureType" class="form-control" required>
@@ -472,7 +478,10 @@
                   <option value="personalizado" data-base="600">Mueble Especial a Medida</option>
                 </select>
               </div>
+            </div>
 
+            <!-- Fila 2: Placas de Melamina y Acabado -->
+            <div class="form-row">
               <div class="form-group">
                 <label for="sheetCount" class="form-label">Placas de 15mm (1850×2750) *</label>
                 <input type="number" id="sheetCount" name="sheetCount" class="form-control" min="1" max="20" value="1" required>
@@ -488,18 +497,23 @@
               </div>
             </div>
 
-            <div class="form-row three-cols">
+            <!-- Fila 3: Dimensiones del Mueble (Alto, Largo, Ancho, Profundidad) -->
+            <div class="form-row four-cols">
               <div class="form-group">
-                <label for="dimWidth" class="form-label">Ancho aprox. (cm)</label>
-                <input type="number" id="dimWidth" name="dimWidth" class="form-control" placeholder="Ej. 120" min="30" max="350" value="100">
+                <label for="dimAlto" class="form-label">Alto aprox. (cm)</label>
+                <input type="number" id="dimAlto" name="dimAlto" class="form-control" placeholder="Ej. 75" min="20" max="275" value="75">
               </div>
               <div class="form-group">
-                <label for="dimHeight" class="form-label">Alto aprox. (cm)</label>
-                <input type="number" id="dimHeight" name="dimHeight" class="form-control" placeholder="Ej. 75" min="30" max="275" value="75">
+                <label for="dimLargo" class="form-label">Largo aprox. (cm)</label>
+                <input type="number" id="dimLargo" name="dimLargo" class="form-control" placeholder="Ej. 120" min="20" max="350" value="120">
               </div>
               <div class="form-group">
-                <label for="dimDepth" class="form-label">Profundidad aprox. (cm)</label>
-                <input type="number" id="dimDepth" name="dimDepth" class="form-control" placeholder="Ej. 50" min="20" max="100" value="50">
+                <label for="dimAncho" class="form-label">Ancho aprox. (cm)</label>
+                <input type="number" id="dimAncho" name="dimAncho" class="form-control" placeholder="Ej. 60" min="20" max="250" value="60">
+              </div>
+              <div class="form-group">
+                <label for="dimProfundidad" class="form-label">Profundidad aprox. (cm)</label>
+                <input type="number" id="dimProfundidad" name="dimProfundidad" class="form-control" placeholder="Ej. 50" min="15" max="120" value="50">
               </div>
             </div>
 
@@ -551,6 +565,7 @@
                 <a href="#" id="btnWhatsAppQuote" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
                   Enviar Cotización por WhatsApp (67477699)
                 </a>
+                <div id="dbSyncStatus" class="db-sync-badge" style="display:none;" aria-live="polite"></div>
               </div>
             </div>
           </div>
@@ -765,8 +780,12 @@
       </div>
 
       <div class="footer-col">
-       
-       
+        <h4 class="footer-heading">Datos Académicos</h4>
+        <div class="academic-badge">
+          <p><strong>Estudiante:</strong> Franco Choque Orellana</p>
+          <p><strong>Materia:</strong> Sistemas Informáticos (Módulo 2)</p>
+          <p><strong>Taller:</strong> Villa Pagador, Cochabamba</p>
+          <p><strong>Especialidad:</strong> Melamina 15mm &bull; SketchUp 3D</p>
         </div>
       </div>
     </div>
@@ -778,6 +797,6 @@
       </div>
     </div>
   </footer>
-
+<script src="agents/agenteCotizador.js"></script>
 </body>
 </html>
